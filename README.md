@@ -1,2 +1,2 @@
 # java-course
-Samples while teaching Java to my students.
+Samples while teaching Java to students.
