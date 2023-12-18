@@ -44,4 +44,8 @@ public class Vehicle extends Transporter {
     public String toString() {
         return "Vehicle{" + "model='" + model + '\'' + ", fuelCapacity=" + fuelCapacityInLiters + ", fuelType=" + fuelType + ", horsePower=" + horsePower + '}';
     }
+
+    public String horn() {
+        return "Tüt Tüt";
+    }
 }

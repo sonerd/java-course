@@ -1,6 +1,6 @@
 package day3;
 
-public class Transporter {
+public abstract class Transporter {
 
     private int tires;
     private int capacity;
@@ -38,4 +38,6 @@ public class Transporter {
     public void stop(){
         System.out.println("Stopped drive");
     }
+
+    public abstract String horn();
 }

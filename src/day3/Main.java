@@ -17,9 +17,11 @@ public class Main {
         Truck truck = new Truck(6, 3, "Mercedes", 200, FuelType.DIESEL, 500, 10000);
 
         truck.drive();
+        System.out.println(truck.horn());
         System.out.println("=======================================================");
 
         Bicycle bicycle = new Bicycle(2, 2, "Cube", FuelType.MANPOWER, 0, false);
         System.out.println("Bike: " + bicycle);
+        System.out.println(bicycle.horn());
     }
 }

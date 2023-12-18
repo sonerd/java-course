@@ -22,4 +22,9 @@ public class Bicycle extends Vehicle {
     public String toString() {
         return "Bicycle{" + "hasBasket=" + hasBasket + ", model=" + super.getModel() + "}";
     }
+
+    @Override
+    public String horn() {
+        return "ring ring ring";
+    }
 }
