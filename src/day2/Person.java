@@ -6,22 +6,22 @@ public class Person {
     private Gender gender;
     private Person marriedTo;
 
-
-    // not effective ... ^ this is better .....private String marriedPersonName;
-
     public Person(String lastName, Salutation salutation, Gender gender) {
         this.lastName = lastName;
         this.salutation = salutation;
         this.gender = gender;
     }
 
+    // Getters and setters for private fields
     public String getLastName() {
         return this.lastName;
     }
-    public Salutation getSalutation(){
+
+    public Salutation getSalutation() {
         return this.salutation;
     }
-    public Gender getGender(){
+
+    public Gender getGender() {
         return this.gender;
     }
 
@@ -29,10 +29,11 @@ public class Person {
         return this.marriedTo;
     }
 
-    public void setLastName(String lastName){
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
-    public void setSalutation(Salutation salutation){
+
+    public void setSalutation(Salutation salutation) {
         this.salutation = salutation;
     }
 
@@ -40,8 +41,7 @@ public class Person {
         this.gender = gender;
     }
 
-
-    public void greet (){
+    public void greet() {
         System.out.println("Hello " + this.salutation + " " + this.lastName);
     }
 
@@ -55,27 +55,31 @@ public class Person {
         }
     }
 
-    public void divorce(Person personB){
-        if(!personB.isMarried() || !this.isMarried()){
+    public void divorce(Person personB) {
+        if (!personB.isMarried() || !this.isMarried()) {
             System.out.println("Not Married");
-        } else{
+        } else {
             this.marriedTo = null;
             personB.marriedTo = null;
-
             System.out.println(this.lastName + " Divorced " + personB.lastName);
         }
     }
 
-    public String toString(){
-        String combine = this.salutation +" "+this.lastName;
+    public String toString() {
+        String combine = this.salutation + " " + this.lastName;
         return combine;
     }
 
-    public boolean isMarried(){
-        if(marriedTo == null ){
-            return false;
-        }  else {
-            return true;
+    public boolean isMarried() {
+        return marriedTo != null;
+    }
+
+    // New method to check marital status
+    public void checkMaritalStatus() {
+        if (isMarried()) {
+            System.out.println(this.toString() + " is married.");
+        } else {
+            System.out.println(this.toString() + " is not married.");
         }
     }
 }

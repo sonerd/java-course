@@ -22,6 +22,7 @@ public class Greeting {
         personLady2.divorce(personThird);
         personThird.marry(personLady);
         personLady2.marry(personThird);
+        
     }
 
 
