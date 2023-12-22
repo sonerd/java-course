@@ -50,6 +50,7 @@ public class Collections {
         int[][] matrix2 = createMatrix(rowCount,columnCount);
         matrixPrinter(matrix2, rowCount, columnCount);
 
+        // java collection framework
         List<String> myNames = new ArrayList<>();
         myNames.add("Faris");
         myNames.add("Jake");
@@ -110,8 +111,9 @@ public class Collections {
     }
 
     private static void printList(List<String> listToPrint) {
-        for(int i =0; i < listToPrint.size();i++){
-            System.out.println(listToPrint.get(i));
+        // foreach item in the given list
+        for (String item : listToPrint) {
+            System.out.println(item);
         }
     }
 
