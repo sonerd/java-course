@@ -1,6 +1,9 @@
 package week2.collections;
 
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -19,7 +22,7 @@ public class Collections2 {
         System.out.println(fruits);
         System.out.println("================================");
 
-        Fruit granny = new Fruit("Apple Granny Smith", false, "green");
+        Fruit granny = new Fruit("Apple Granny Smith", true, "green");
         Fruit delicious = new Fruit("Red delicious", true, "red");
         Fruit delicious2 = new Fruit("Red delicious", true, "red");
 
@@ -42,11 +45,26 @@ public class Collections2 {
         numbers.add(12);
         numbers.add(45);
         System.out.println(numbers);
+
+        System.out.println("================================");
+        Fruit banana = new Fruit("Banana", true, "banana");
+        Map<Integer, Fruit> fruitMap = new HashMap<>();
+        fruitMap.put(1, granny);
+        fruitMap.put(2, delicious);
+        fruitMap.put(3, banana);
+        System.out.println(fruitMap);
+
+        final Fruit fruit = fruitMap.get(5);
+        if (fruit != null) {
+            System.out.println(fruit.getName());
+        }
+
+        fruitMap.containsKey(5);
     }
 
     public static void printFruits(Set<Fruit> fruitsToPrint){
         for (Fruit fruit : fruitsToPrint) {
-            if (fruit.isSweet()) {
+            if (fruit.isSweet() && fruit.getColor().equals("red")) {
                 System.out.println(fruit.getName());
             }
         }
