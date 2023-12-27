@@ -1,4 +1,4 @@
-package week3;
+package week3.ui;
 
 
 import java.awt.GridLayout;
