@@ -54,12 +54,27 @@ public class Collections2 {
         fruitMap.put(3, banana);
         System.out.println(fruitMap);
 
-        final Fruit fruit = fruitMap.get(5);
-        if (fruit != null) {
+        if (fruitMap.containsKey(3)){
+            final Fruit fruit = fruitMap.get(3);
             System.out.println(fruit.getName());
         }
+        // create a map where you group fruits: apple -> [granny, delicious], dates -> [sukeri, ajwaa]....
 
-        fruitMap.containsKey(5);
+        Map<String,Set<Fruit>> fruitGroups = new HashMap<>();
+        Set<Fruit> apples = new HashSet<>();
+        apples.add(granny);
+        apples.add(delicious);
+        fruitGroups.put("apples",apples);
+        Set<Fruit> bananas = new HashSet<>();
+        bananas.add(banana);
+        fruitGroups.put("bananas",bananas);
+
+        for (Map.Entry<String,Set<Fruit>> fruitEntry:fruitGroups.entrySet()){
+            System.out.println(fruitEntry.getKey()+"--->"+fruitEntry.getValue());
+        }
+
+
+
     }
 
     public static void printFruits(Set<Fruit> fruitsToPrint){
