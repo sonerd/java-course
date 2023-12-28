@@ -1,5 +1,9 @@
 package day2;
 
+import entities.Gender;
+import entities.Person;
+import entities.Salutation;
+
 public class Greeting {
    private static Gender genderInput = Gender.MALE;
     public static void main (String[] args){
@@ -8,12 +12,12 @@ public class Greeting {
             name = name.replace("Smith","Schmidt");
         }*/
         Person personJames;
-        personJames = new Person("James",Salutation.MR, Gender.MALE);
+        personJames = new Person("James", Salutation.MR, Gender.MALE);
 
-        Person personLady = new Person("Smith",Salutation.MRS, Gender.FEMALE);
+        Person personLady = new Person("Smith", Salutation.MRS, Gender.FEMALE);
 
-        Person personThird = new Person("John",Salutation.MR,Gender.MALE);
-        Person personLady2 = new Person("May",Salutation.MRS,Gender.FEMALE);
+        Person personThird = new Person("John", Salutation.MR, Gender.MALE);
+        Person personLady2 = new Person("May", Salutation.MRS, Gender.FEMALE);
 
         personJames.marry(personLady);
       //  System.out.println("James is married to: " + personJames.getMarriedTo().toString());

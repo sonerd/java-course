@@ -1,4 +1,4 @@
-package day2;
+package entities;
 
 public enum Salutation {
     MR,MRS,MISS;

@@ -1,6 +1,6 @@
 package week2.collections;
 
-import java.util.Collection;
+import entities.Fruit;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;

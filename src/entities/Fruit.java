@@ -1,4 +1,4 @@
-package week2.collections;
+package entities;
 
 import java.util.Objects;
 
@@ -40,7 +40,7 @@ public class Fruit {
 
     @Override
     public String toString() {
-        return "Fruit{" + "name='" + name + '\'' + ", sweet=" + sweet + ", color='" + color + '\'' + '}';
+        return "entities.Fruit{" + "name='" + name + '\'' + ", sweet=" + sweet + ", color='" + color + '\'' + '}';
     }
 
     @Override

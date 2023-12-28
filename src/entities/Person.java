@@ -1,4 +1,4 @@
-package day2;
+package entities;
 
 public class Person {
     private String lastName;
