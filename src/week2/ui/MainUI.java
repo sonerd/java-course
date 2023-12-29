@@ -3,10 +3,7 @@ package week2.ui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class MainUI {
 
@@ -24,6 +21,7 @@ public class MainUI {
         frame.setSize(400, 300); // Width, Height
         frame.setVisible(true); // Show the window
 
+
         // panel
         JPanel panel = new JPanel();
 
@@ -34,19 +32,72 @@ public class MainUI {
         frame.add(panel);
 
         // TextField
-        JTextField textField = new JTextField();
-        panel.add(textField);
+        JLabel currencyInputLabel = new JLabel("Enter the amount: ");
+        JTextField currencyInput = new JTextField();
+        panel.add(currencyInputLabel);
+        panel.add(currencyInput);
+        JLabel conversionRateLabel = new JLabel("Enter the rate: ");
+        JTextField conversionRate = new JTextField();
+        panel.add(conversionRateLabel);
+        panel.add(conversionRate);
+        JLabel outputLabel = new JLabel("The output");
+        panel.add(outputLabel);
+        JLabel outputLabelAmount = new JLabel("0");
+        panel.add(outputLabelAmount);
 
         // Button
-        JButton okButton = new JButton("Convert");
-        panel.add(okButton);
+        JButton convertButton = new JButton("Convert");
+        panel.add(convertButton);
+        JButton convertButtonReverse = new JButton("Convert Reverse");
+        panel.add(convertButtonReverse);
 
-        okButton.addActionListener(new ActionListener() {
+        convertButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println("Pressed OK " + textField.getText());
+               String inputAmount = currencyInput.getText();
+               String inputRate = conversionRate.getText();
+               if(inputAmount.isBlank() || !isNumber(inputAmount)){
+                   JOptionPane.showMessageDialog(frame,"Please input a number");
+               }
+
+               double inputAmountDouble = Double.parseDouble(inputAmount);
+                if(inputRate.isBlank() || !isNumber(inputRate)){
+                    JOptionPane.showMessageDialog(frame,"Please input a number");
+                }
+               double inputRateDouble = Double.parseDouble(inputRate);
+
+               double convertedRate = inputAmountDouble * inputRateDouble;
+                outputLabelAmount.setText(String.valueOf(Math.round(convertedRate * 100.0) / 100.0));
             }
         });
 
+        convertButtonReverse.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                String inputAmount = currencyInput.getText();
+                String inputRate = conversionRate.getText();
+                if(inputAmount.isBlank() || !isNumber(inputAmount)){
+                    JOptionPane.showMessageDialog(frame,"Please input a number");
+                }
+
+                double inputAmountDouble = Double.parseDouble(inputAmount);
+                if(inputRate.isBlank() || !isNumber(inputRate)){
+                    JOptionPane.showMessageDialog(frame,"Please input a number");
+                }
+                double inputRateDouble = Double.parseDouble(inputRate);
+
+                double convertedRate = inputAmountDouble / inputRateDouble;
+                outputLabelAmount.setText(String.valueOf(Math.round(convertedRate * 100.0) / 100.0));
+            }
+        });
+
+    }
+    private static boolean isNumber(String numToCheck){
+        try{
+            Double.parseDouble(numToCheck);
+            return true;
+        } catch (NumberFormatException e){
+        return false;
+        }
     }
 }
