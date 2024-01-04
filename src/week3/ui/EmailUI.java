@@ -25,7 +25,7 @@ import javax.swing.JTextField;
 public class EmailUI {
 
     public static void main(String[] args) {
-        JFrame frame = new JFrame("Email Sender");
+        JFrame frame = new JFrame("Job Application UI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
 
@@ -52,14 +52,17 @@ public class EmailUI {
         panel.add(new JScrollPane(messageArea));
         panel.add(sendButton);
 
-        sendButton.addActionListener(e -> {
-            String firstName = firstNameField.getText();
-            String lastName = lastNameField.getText();
-            String email = emailField.getText();
-            String message = messageArea.getText();
+        sendButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                String firstName = firstNameField.getText();
+                String lastName = lastNameField.getText();
+                String email = emailField.getText();
+                String message = messageArea.getText();
 
-            // Sending an email using JavaMail API
-            sendEmail(firstName, lastName, email, message, frame);
+                // Sending an email using JavaMail API
+                sendEmail(firstName, lastName, email, message, frame);
+            }
         });
 
         frame.add(panel);
@@ -90,9 +93,10 @@ public class EmailUI {
             mailMessage.setFrom(new InternetAddress(username));
             mailMessage.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
             mailMessage.setSubject("Message Received");
-            mailMessage.setText("Dear " + firstName + " " + lastName + ",\n\n" + message + "\n\nMessage Received.");
+            mailMessage.setText("Dear " + firstName + " " + lastName + ",\n\n" + "We have received your application.");
 
             Transport.send(mailMessage);
+
             JOptionPane.showMessageDialog(frame, "Email Sent Successfully!");
         } catch (MessagingException ex) {
             JOptionPane.showMessageDialog(frame, "Error: " + ex.getMessage());
