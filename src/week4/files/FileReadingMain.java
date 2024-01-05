@@ -1,7 +1,6 @@
 package week4.files;
 
 import entities.Fruit;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FileMain {
+public class FileReadingMain {
 
     public static void main(String[] args) {
         final String absolutePath = "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\java-course\\src\\week2";
@@ -28,10 +27,10 @@ public class FileMain {
         if (directory.isDirectory()) {
             List<String> fileToPrint = new ArrayList<>();
             File[] files = directory.listFiles();
-            if(files != null){
+            if (files != null) {
                 for (File file : files) {
                     fileToPrint.add(file.getName());
-               }
+                }
             }
             System.out.println(fileToPrint);
         }
@@ -56,7 +55,7 @@ public class FileMain {
         final File txtFile = new File("text.txt");
         try {
             FileInputStream fis = new FileInputStream(txtFile);
-            while(fis.read() != -1) {
+            while (fis.read() != -1) {
                 //System.out.println("File input: " + fis.read());
             }
             fis.close();
@@ -97,24 +96,23 @@ public class FileMain {
         System.out.println("-------------Fruit objects-----------");
         final String fruits = "Fruits.txt";
         final File fruitsPath = new File(fruits);
-        try{
-        BufferedReader reader = new BufferedReader(new FileReader(fruitsPath));
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(fruitsPath));
             List<String> fruitList = reader.lines().collect(Collectors.toList());
             List<Fruit> finalFruitList = new ArrayList<>();
             for (String fruit : fruitList) {
                 String[] columnsOfFruits = fruit.split(";");
-                Fruit fruitCharacteristics = new Fruit(columnsOfFruits[0],Boolean.parseBoolean(columnsOfFruits[1]),columnsOfFruits[2]);
+                Fruit fruitCharacteristics = new Fruit(columnsOfFruits[0], Boolean.parseBoolean(columnsOfFruits[1]), columnsOfFruits[2]);
                 finalFruitList.add(fruitCharacteristics);
             }
             System.out.println(finalFruitList);
-        } catch(FileNotFoundException e){
+            reader.close();
+        } catch (FileNotFoundException e) {
             System.out.println("File not found" + e.getMessage());
 
+        } catch (IOException e) {
+            System.out.println("Cannot close: " + e.getMessage());
         }
-
-
-
-
     }
 
     private static void checkFileExistence(File file) {
