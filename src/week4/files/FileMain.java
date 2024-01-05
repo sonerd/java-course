@@ -1,5 +1,7 @@
 package week4.files;
 
+import entities.Fruit;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -89,6 +91,29 @@ public class FileMain {
         } catch (IOException e) {
             System.out.println("Cannot read file, cause: " + e.getMessage());
         }
+
+
+        // ===========================================================
+        System.out.println("-------------Fruit objects-----------");
+        final String fruits = "Fruits.txt";
+        final File fruitsPath = new File(fruits);
+        try{
+        BufferedReader reader = new BufferedReader(new FileReader(fruitsPath));
+            List<String> fruitList = reader.lines().collect(Collectors.toList());
+            List<Fruit> finalFruitList = new ArrayList<>();
+            for (String fruit : fruitList) {
+                String[] columnsOfFruits = fruit.split(";");
+                Fruit fruitCharacteristics = new Fruit(columnsOfFruits[0],Boolean.parseBoolean(columnsOfFruits[1]),columnsOfFruits[2]);
+                finalFruitList.add(fruitCharacteristics);
+            }
+            System.out.println(finalFruitList);
+        } catch(FileNotFoundException e){
+            System.out.println("File not found" + e.getMessage());
+
+        }
+
+
+
 
     }
 

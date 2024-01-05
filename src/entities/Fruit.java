@@ -40,7 +40,7 @@ public class Fruit {
 
     @Override
     public String toString() {
-        return "entities.Fruit{" + "name='" + name + '\'' + ", sweet=" + sweet + ", color='" + color + '\'' + '}';
+        return "Fruit{" + "name='" + name + '\'' + ", sweet=" + sweet + ", color='" + color + '\'' + '}';
     }
 
     @Override

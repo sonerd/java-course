@@ -1,0 +1,4 @@
+Apple;true;red
+Banana;true;yellow
+Melon;false;green
+Orange;false;orange
