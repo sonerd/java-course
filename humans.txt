@@ -1,3 +1,8 @@
-Jake;Paul;British
-Eric;Kevin;Spanish
-Shanar;AlDousiri;Saudi
+John;Smith;british
+Mike;Taylor;british
+Antonio;Silva;spanish
+Thomas;Müller;german
+Hans;Schmidt;german
+Cheng;Lao;chinese
+Chin;Shang;chinese
+Francis;Brando;spanish
