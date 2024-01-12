@@ -26,7 +26,7 @@ public class FileReadingMain {
         checkFileExistence(directory);
         if (directory.isDirectory()) {
             List<String> fileToPrint = new ArrayList<>();
-            File[] files = directory.listFiles();
+            File[] files = directory.listFiles();                   //Why do this?
             if (files != null) {
                 for (File file : files) {
                     fileToPrint.add(file.getName());
@@ -94,11 +94,13 @@ public class FileReadingMain {
 
         // ===========================================================
         System.out.println("-------------Fruit objects-----------");
+        // working with CSV File
+        // go through the file and create an object of Fruit for each line
         final String fruits = "Fruits.txt";
         final File fruitsPath = new File(fruits);
         try {
             BufferedReader reader = new BufferedReader(new FileReader(fruitsPath));
-            List<String> fruitList = reader.lines().collect(Collectors.toList());
+            List<String> fruitList = reader.lines().collect(Collectors.toList()); // all rows of the file
             List<Fruit> finalFruitList = new ArrayList<>();
             for (String fruit : fruitList) {
                 String[] columnsOfFruits = fruit.split(";");

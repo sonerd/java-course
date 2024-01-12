@@ -19,7 +19,7 @@ public class FileWritingMain {
         final File file = new File("output.txt");
         try {
             FileOutputStream fos = new FileOutputStream(file);
-            fos.write(1);
+            fos.write(55);
             fos.flush();
             fos.close();
         } catch (FileNotFoundException e) {

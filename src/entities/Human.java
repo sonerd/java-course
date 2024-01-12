@@ -31,7 +31,7 @@ public class Human {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("entities.Human{");
+        final StringBuilder sb = new StringBuilder("Human{");
         sb.append("firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
         sb.append(", nationality='").append(nationality).append('\'');
