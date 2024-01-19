@@ -51,6 +51,7 @@ public class Faris_Alali_BCS15_Q4 extends JFrame {
 
     private void saveTheFile() {
         String input = nameAndLastNameField.getText();
+        // "Tom Taylor" -> ["Tom", "Taylor"]
         String[] nameAndLastName = input.split(" ");
 
         if (nameAndLastName.length != 2) {
@@ -63,13 +64,12 @@ public class Faris_Alali_BCS15_Q4 extends JFrame {
         String fileName = name + "_" + lastName + "_BCS15_Q4.txt";
         String content = freeTextArea.getText();
 
-
         int charCount = content.replaceAll("\\n", "").length();
         int lineCount = content.split("\\n").length;
 
+        // since java 7 "try with resources" will automatically close the resource (file)
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             writer.write(content);
-
             // Display message
             JOptionPane.showMessageDialog(this, "File saved successfully!\nFile Name: " + fileName +
                     "\nNumber of Characters: " + charCount + "\nNumber of Lines: " + lineCount);
