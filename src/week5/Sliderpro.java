@@ -108,7 +108,7 @@ public class Sliderpro extends JFrame implements ActionListener {   // Why do we
         this.setJMenuBar(menuBar);
         this.setVisible(true);
 
-        home.addMenuListener();
+
 
 
     }

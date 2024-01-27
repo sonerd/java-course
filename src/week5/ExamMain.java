@@ -13,6 +13,8 @@ public class ExamMain {
 
         ExtendingClass extendingClass = new ExtendingClass("Tom", 22, "Dog");
 
+        char[][][] data = {{new char[]{'a'}}, {new char[]{'a'}}, {new char[]{'f'}}};
+
     }
 
 }
