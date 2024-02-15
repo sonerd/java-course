@@ -8,7 +8,7 @@ public class Sorting {
         //test arrays
         int[] arr = {5, 3, 8, 2, 1, 4};
         arr = insertionsort(arr);
-        System.out.println(Arrays.toString(arr));
+        System.out.println("insertion: " + Arrays.toString(arr));
 
         // visualizing of insertion sort
         // Start from the second element (3).
@@ -24,8 +24,11 @@ public class Sorting {
 
         int[] another = {5, 3, 8, 2, 1, 4};
         int[] result = selectionsort(another);
-        System.out.println(Arrays.toString(result));
+        System.out.println("selectionsort:" + Arrays.toString(result));
 
+        int[] unsortedArray = {5, 3, 8, 2, 1, 4};
+        mergesort(unsortedArray);
+        System.out.println("mergesort: " + Arrays.toString(unsortedArray));
     }
 
     // O(n^2) TIME
@@ -63,5 +66,69 @@ public class Sorting {
             array[min] = temp;
         }
         return array;
+    }
+
+    // O(n log(n)) TIME
+    private static void mergesort(int[] array) {
+
+        int length = array.length;
+        if (length <= 1)
+            return; // base check
+
+        int middle = length / 2;
+        int[] leftArray = new int[middle];
+        int[] rightArray = new int[length - middle];
+
+        int i = 0; // index for left array
+        int j = 0; // index for right array
+
+        for(; i < length; i++) {
+            if (i < middle) {
+                leftArray[i] = array[i];
+            } else {
+                rightArray[j] = array[i];
+                j++;
+            }
+        }
+        // recursively
+        mergesort(leftArray);
+        mergesort(rightArray);
+
+        merge(leftArray, rightArray, array);
+    }
+
+    private static void merge(int[] leftArray, int[] rightArray, int[] array) {
+
+        int leftSize = array.length / 2;
+        int rightSize = array.length - leftSize;
+        int i = 0, l = 0, r = 0; //indices
+
+        // check the conditions for merging
+        while(l < leftSize && r < rightSize) {
+
+            // sorting condition
+            if(leftArray[l] < rightArray[r]) {
+                array[i] = leftArray[l];
+                i++;
+                l++;
+            }
+            else {
+                array[i] = rightArray[r];
+                i++;
+                r++;
+            }
+        }
+
+        // logic in case there is one left over
+        while(l < leftSize) {
+            array[i] = leftArray[l];
+            i++;
+            l++;
+        }
+        while(r < rightSize) {
+            array[i] = rightArray[r];
+            i++;
+            r++;
+        }
     }
 }
