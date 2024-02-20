@@ -29,6 +29,49 @@ public class Sorting {
         int[] unsortedArray = {5, 3, 8, 2, 1, 4};
         mergesort(unsortedArray);
         System.out.println("mergesort: " + Arrays.toString(unsortedArray));
+
+
+        int[] array = {5, 3, 8, 2, 1, 4};
+        quicksort(array, 0, array.length-1);
+        System.out.println("quicksort: " + Arrays.toString(array));
+    }
+
+    // average O(n log(n)) TIME but in worst case O(n^2) TIME which is pending on the selection of the pivot
+    // so a very small pivot will increase time complexity
+    public static void quicksort(int[] unsortedArray, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+
+        int middle = (left + right) / 2;
+        int pivot = unsortedArray[middle];
+        int index = partition(unsortedArray, left, right, pivot);
+        quicksort(unsortedArray, left, index-1);
+        quicksort(unsortedArray, index, right);
+    }
+
+    private static int partition(final int[] unsortedArray, int left, int right, int pivot) {
+        while (left <=right) {
+            // move the two indices to each other
+            while(unsortedArray[left] < pivot) {
+                left++;
+            }
+
+            while(unsortedArray[right] > pivot) {
+                right--;
+            }
+
+            if (left <= right) {
+                // swap
+                int temp = unsortedArray[left];
+                unsortedArray[left] = unsortedArray[right];
+                unsortedArray[right] = temp;
+                left++;
+                right--;
+            }
+
+        }
+        return left;
     }
 
     // O(n^2) TIME
